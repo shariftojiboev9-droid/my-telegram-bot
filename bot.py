@@ -2,36 +2,18 @@ import os
 import telebot
 import requests
 
-TELEGRAM_BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN")
-GROQ_API_KEY = os.environ.get("GROQ_API_KEY")
+TELEGRAM_BOT_TOKEN = "8840551930:AAGX6kaDLpS1APQN1bC6WYWgv6v18x1H4JkBOTFATHER"
+GROQ_API_KEY = "gsk_TTxQJl07aisQtdWKz6wKWGdyb3FYL6zSxQpNCdguK9ws8E6A52WDGROQ"
 
 bot = telebot.TeleBot(TELEGRAM_BOT_TOKEN)
 
 @bot.message_handler(func=lambda message: True)
 def chat_with_ai(message):
     try:
-        headers = {
-            "Authorization": f"Bearer {GROQ_API_KEY}",
-            "Content-Type": "application/json"
-        }
-        data = {
-            "model": "llama-3.3-70b-versatile",
-            "messages": [
-                {
-                    "role": "user",
-                    "content": message.text
-                }
-            ]
-        }
-        
-        response = requests.post("https://api.groq.com/openai/v1/chat/completions", headers=headers, json=data)
-        res_json = response.json()
-        
-        reply_text = res_json["choices"][0]["message"]["content"]
-        bot.reply_to(message, reply_text)
-        
+        # Здесь продолжится твой код
+        pass
     except Exception as e:
-        bot.reply_to(message, f"Произошла ошибка: {e}")
+        bot.reply_to(message, "Ошибка!")
 
-print("Бот запущен и готов к работе!")
-bot.infinity_polling(skip_pending=True)
+bot.infinity_polling()
+
