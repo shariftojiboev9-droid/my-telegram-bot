@@ -34,4 +34,4 @@ def chat_with_ai(message):
         bot.reply_to(message, f"Произошла ошибка: {e}")
 
 print("Бот запущен и готов к работе!")
-bot.polling()
+bot.infinity_polling(skip_pending=True)
